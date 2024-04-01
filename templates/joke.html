@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Food Jokes!
+{% endblock %}
+
+{% block main %}
+<div class="container align-items-center">
+    <h4 class="mb-4">{{joke}}</h4>
+    <form action="/fun" method="get">
+        <button class="btn btn-primary" type="submit">Back</button>
+    </form>
+</div>
+
+{% endblock %}

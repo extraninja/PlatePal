@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Generate a Meal Plan!
+{% endblock %}
+
+{% block main %}
+<h1 class="m-4" class="text-success">
+    1 Day Meal Plan
+</h1>
+<h4 class="mb-5">Adjust any of the criteria to generate a custom 1 day meal plan! (breakfast, lunch, dinner)</h4>
+<form action="/planrequest" method="post">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col">
+                <label for='calories'>Caloric Target: </label>
+                <input type="number" name="calories" required>
+            </div>
+            <div class="col">
+                <label for='diet'>Diet: </label>
+                <select name ='diet'>
+                    <option value="">Any</option>
+                    <option value="gluten free">Gluten Free</option>
+                    <option value="ketogenic">Ketogenic</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="Pescetarian">Pescetarian</option>
+                    <option value="paleo">Paleo</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary">Generate!</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Today's Foods
+{% endblock %}
+
+{% block main %}
+<h1 class="m-4">Todays foods</h1>
+    <table class="table table-responsive mb-4">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Servings</th>
+                <th>Calories</th>
+                <th>Protein (g)</th>
+                <th>Carbohydrate (g)</th>
+                <th>Fat (g)</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for food in today%}
+                    <tr>
+                        <td>{{food.description}}</td>
+                        <td>{{food.servings}}</td>
+                        <td>{{food.calories}}</td>
+                        <td>{{food.protein}}</td>
+                        <td>{{food.carbs}}</td>
+                        <td>{{food.fats}}</td>
+                    </tr>
+
+                {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/reset" method="post">
+        <button class="btn btn-primary" type="submit">Reset</button>
+    </form>
+{% endblock %}

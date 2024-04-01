@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Generate a Meal Plan!
+{% endblock %}
+
+{% block main %}
+<h1 class="m-4" class="text-success">
+    1 Day Meal Plan
+</h1>
+<h4 class="ms-4"></h4>
+    <div class="container justify-content-center">
+        <div class="row">
+            {% for recipe in meals%}
+            <div class="col">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <img class="card-img-top" src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{recipe.title}}</h5>
+                      <p class="card-text">Ready in {{recipe.readyInMinutes}} minutes, Serves {{recipe.servings}}</p>
+                      <a href="{{recipe.sourceUrl}}" class="btn btn-primary">Full Recipe</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class= "col">
+                <div class="card mx-auto" style="width: 18rem;">
+                    <div class="card-header">
+                      Total Macros
+                    </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Calories: {{macros.calories}} g</li>
+                            <li class="list-group-item">Carbohydrates: {{macros.carbohydrates}} g</li>
+                            <li class="list-group-item">Protein: {{macros.protein}} g</li>
+                            <li class="list-group-item">Fat: {{macros.fat}} g</li>
+                        </ul>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

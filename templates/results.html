@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block main %}
+<h1>Search results</h1>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for food in table%}
+                    <tr>
+                        <td>{{food.id}}</td>
+                        <td>{{food.description}}</td>
+                        <td>
+                            <form action="/add" method="post">
+                                <label for='servings'># of Servings: </label>
+                                <input type="number" name="servings" min="1" step="1">
+                                <input type="hidden" name="id" value="{{food.id}}">
+                                <select name ='unit'>
+                                    <option value="grams">Grams</option>
+                                    <option value="cups">Cups</option>
+                                </select>
+                                <button class="btn btn-primary">Add</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

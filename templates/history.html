@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<h1>Food History</h1>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Date Added</th>
+                <th>Description</th>
+                <th>Servings</th>
+                <th>Calories</th>
+                <th>Protein (g)</th>
+                <th>Carbohydrate (g)</th>
+                <th>Fat (g)</th>
+                <th>Quick Add</th>
+
+            </tr>
+        </thead>
+        <tbody>
+                {% for food in history%}
+                    <tr>
+                        <td>{{food.date_added}}</td>
+                        <td>{{food.description}}</td>
+                        <td>{{food.servings}}</td>
+                        <td>{{food.calories}}</td>
+                        <td>{{food.protein}}</td>
+                        <td>{{food.carbs}}</td>
+                        <td>{{food.fats}}</td>
+                        <td>
+                            <form action="/add" method="post">
+                                <label for='servings'># of Servings: </label>
+                                <input type="number" name="servings" min="1" max="100" step="1">
+                                <input type="hidden" name="id" value="{{food.id}}">
+                                <input type="hidden" name="description" value="{{food.description}}">
+                                <select name ='unit'>
+                                    <option value="grams">Grams</option>
+                                    <option value="cups">Cups</option>
+                                </select>
+                                <button class="btn btn-primary">Add</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
